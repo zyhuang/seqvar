@@ -16,7 +16,11 @@ class InternalError(Error):
 
 
 class Region(object):
-    """
+    """A class for genomic region defintion.
+
+    Methods:
+        __init__(): initialize a Region object
+        __str__(): return a string version of region "chrom:pstart-pend"
 
     Attributes:
         chrom: chromosome name of the region
@@ -26,7 +30,7 @@ class Region(object):
     """
 
     def __init__(self, *args):
-        """ Initialize a Region object.
+        """Initialize a Region object.
 
         Initialize a Region object given optional inputs of chrom, starting and
         ending position of the region.
@@ -40,13 +44,13 @@ class Region(object):
             if 1 arg is given , init a region for whole chromosome (len=-1)
             if 2 args are given , init a region of 1-base long
 
-        Return:
+        Returns:
 
         Raises:
             InternalError: error in calling code (mostly with input args)
             RegionRangeError: invalid input region, pstart<=0 or pend<=0
-                or pend<pstart
-            ValueError: input argument type is wrong
+                or pend < pstart
+            ValueError: input argument type (string/int) is wrong
         """
         self.chrom = ''
         self.pstart = self.pend = self.length = -1
@@ -87,6 +91,12 @@ class Region(object):
 
 
     def __str__(self):
+        """Format a region object for print (chrom:pstart-pend).
+
+        Returns:
+            a string of format "chrom(:pstart-pend)". pstart, pend are 1-based
+            inclusive (if available).
+        """
         if self.length == -1:
             return self.chrom
         return '{}:{}-{}'.format(self.chrom, self.pstart, self.pend)
