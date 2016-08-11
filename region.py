@@ -65,6 +65,7 @@ class Region(object):
 
         if len(args) >= 1:
             chrom = args[0]
+            pstart = pend = length = -1
 
         if len(args) == 2:
             pstart = int(args[1])
