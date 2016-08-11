@@ -1,6 +1,4 @@
 
-# TODO(Zhuoyi): add docstring
-
 
 class Error(Exception):
     pass
@@ -84,7 +82,8 @@ class Region(object):
                                                                      args[2]))
             if pend < pstart:
                 raise RegionRangeError('region is empty or negative length '
-                                       '(found {} {})'.format(args[1],args[2]))
+                                       '(found {} {})'.format(args[1],
+                                                              args[2]))
             length = pend - pstart + 1
 
         self.chrom, self.pstart, self.pend, self.length \
