@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 """This module contains functions dealing with fastq file.
 
-    fastq_get_rgstr() derive RG string from input fastq file.
+    get_rgstr() derive RG string from input fastq file.
 
         Example:
 
-            $ python3 fastq_rgstr.py -f fastq_name -s sample_name -n num_line
+            $ python3 fastq.py -f fastq_name -s sample_name -n num_line
 
         This will sample "num_line" lines from fastq "fastq_name" and return an
         RG string with the "sample_name" in SM field, e.g.
@@ -24,7 +24,7 @@ import argparse
 
 # =============================================================================
 
-def fastq_get_rgstr(fastq_name, sample_name=None, head_nline=1,
+def get_rgstr(fastq_name, sample_name=None, head_nline=1,
                     platform='ILLUMINA'):
     """Generate RG string from input fastq file.
 
@@ -126,7 +126,7 @@ def fastq_get_rgstr(fastq_name, sample_name=None, head_nline=1,
 # =============================================================================
 
 def main():
-    """Wrapper of function fastq_get_rgstr() with command line inputs."""
+    """Wrapper of function get_rgstr() with command line inputs."""
 
     parser = argparse.ArgumentParser()
 
@@ -146,7 +146,7 @@ def main():
     sample_name = args.sname
     head_nline = args.nline
 
-    read_group = fastq_get_rgstr(fastq_name, sample_name, head_nline)
+    read_group = get_rgstr(fastq_name, sample_name, head_nline)
     print(read_group, file=sys.stdout, flush=True)
 
 # =============================================================================
