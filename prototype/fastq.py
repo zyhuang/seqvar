@@ -115,9 +115,9 @@ def get_rgstr(fastq_name, sample_name=None, head_nline=1,
     pu_str = pu_str.lstrip('@').split(':')
     id_str = pu_str[:-2] + [pu_str[-1]]
     # instrument_id : flowcell_id : ... : lane_id
-    id_str = ':'.join(id_str)
+    id_str = '.'.join(id_str)
     # instrument_id : flowcell_id : ... : flowcell_barcode : lane_id
-    pu_str = ':'.join(pu_str)
+    pu_str = '.'.join(pu_str)
     rg_str = ('@RG\tID:{}\tPL:{}\tPU:{}\tSM:{}'
               .format(id_str, platform, pu_str, sample_name))
 
